@@ -6,10 +6,9 @@ class Solution:
         :rtype: int
         """
 
-        for index in range(len(nums)):
+        for index in reversed(range(len(nums))):
             if nums[index] == val:
-                # nums.remove(nums[index])
-                nums[index] = None
+                nums.remove(nums[index])
 
 
         print(nums)
