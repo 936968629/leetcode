@@ -31,7 +31,7 @@ class Solution:
         return [list(i) for i in res]
 
 
-oldNums = [1, 0, -1, 0, -2, 2]
+oldNums = [1, 0, -1, 0, -1, 0, -2, 2]
 k = 0
 sol = Solution()
 sol.fourSum(oldNums,k)
