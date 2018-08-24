@@ -8,10 +8,10 @@ class Solution:
         direction = -1
         result = ''
         for i in range(0, len(s), k):
-            if i + k < len(s):
+            if i + k <= len(s):
                 result += s[i:k+i][::direction]
             else:
-                result += s[i:k+i]
+                result += s[i:len(s)][::direction]
             direction *= -1
             # reverseStr = s[i:k][::-1]
             # print(i)
@@ -20,6 +20,6 @@ class Solution:
 
 
 s = "abcdefg"
-k = 2
+k = 8
 sol = Solution()
 sol.reverseStr(s, k)
