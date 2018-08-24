@@ -8,9 +8,9 @@ class Solution:
         for i in range(len(nums)):
             diff = target - nums[i]
             if diff in nums[i+1:]:
-                print(i, nums[i+1:].index(diff) + 1 + i)
+                # print(i, nums[i+1:].index(diff) + 1 + i)
                 return (i, nums[i+1:].index(diff) + 1 + i)
-        print(-1, -1)
+        # print(-1, -1)
         return (-1, -1)
 
 num = [2, 7, 4, 9]
