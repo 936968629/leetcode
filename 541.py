@@ -18,7 +18,8 @@ class Solution:
         print(result)
         return result
 
+
 s = "abcdefg"
 k = 2
 sol = Solution()
-sol.reverseStr(s,k)
+sol.reverseStr(s, k)
