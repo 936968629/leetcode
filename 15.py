@@ -4,6 +4,8 @@ class Solution:
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+
+        """
         target = 0
         dic = {}
         lens = len(nums)
@@ -24,13 +26,10 @@ class Solution:
                 for index in dic[diff]:
                     #最后一个数下标必定大于前两个下标
                     if index[1] < i:
-                        #整理重合的元祖
-                        # mylist = [nums[index[0]], nums[index[1]], nums[i] ]
-                        # mylist.sort()
-                        # mytuple = tuple(mylist)
                         res.add( (nums[index[0]], nums[index[1]], nums[i] ) )
         print([list(i) for i in res])
         return [list(i) for i in res]
+        """
 
 
 oldNums = [-1, 0, 1, 2, -1, -4]
