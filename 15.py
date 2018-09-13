@@ -30,8 +30,15 @@ class Solution:
         print([list(i) for i in res])
         return [list(i) for i in res]
         """
+#       先排序
+        if len(nums) < 2:
+            return []
+        nums.sort()
+        print(nums)
+
 
 
 oldNums = [-1, 0, 1, 2, -1, -4]
+# oldNums.sort()
 sol = Solution()
 sol.threeSum(oldNums)

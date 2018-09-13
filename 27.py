@@ -20,6 +20,7 @@ class Solution:
                 i += 1
         print(nums)
 
-numArr = [0,1,2,2,3,0,4,2]
+
+numArr = [0, 1, 2, 2, 3, 0, 4, 2]
 so = Solution()
 so.removeElement(numArr, 2)

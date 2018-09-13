@@ -7,26 +7,26 @@ class Solution:
         """
         lens = len(nums)
         dic = {}
-        #先排序后用集合去重
+        # 先排序后用集合去重
         res = set()
         nums.sort()
-        #先计算前两个数的和
-        for i in range(lens-1):
-            for p in range(i+1,lens):
+        # 先计算前两个数的和
+        for i in range(lens - 1):
+            for p in range(i + 1, lens):
                 key = nums[i] + nums[p]
                 if key not in dic:
                     dic[key] = [(i, p)]
                 else:
                     dic[key].append((i, p))
 
-        for i in range(2,lens-1):
-             for p in range(i+1, lens):
-                    pre = target - nums[i] - nums[p]
-                    if pre in dic:
-                        for index in dic[pre]:
-                         #通过下标判断为合格的后两位数
-                            if index[1] < i:
-                                res.add((nums[index[0]], nums[index[1]], nums[i], nums[p]))
+        for i in range(2, lens - 1):
+            for p in range(i + 1, lens):
+                pre = target - nums[i] - nums[p]
+                if pre in dic:
+                    for index in dic[pre]:
+                        # 通过下标判断为合格的后两位数
+                        if index[1] < i:
+                            res.add((nums[index[0]], nums[index[1]], nums[i], nums[p]))
         print([list(i) for i in res])
         return [list(i) for i in res]
 
@@ -34,4 +34,7 @@ class Solution:
 oldNums = [1, 0, -1, 0, -1, 0, -2, 2]
 k = 0
 sol = Solution()
-sol.fourSum(oldNums,k)
+sol.fourSum(oldNums, k)
+
+print([x * 2 for x in range(6)])
+print({v: k for k, v in {'name': 'wen', 'age': 18}.items()})
