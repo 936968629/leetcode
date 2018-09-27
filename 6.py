@@ -5,7 +5,8 @@ class Solution:
         :type numRows: int
         :rtype: str
         """
-        
+
+
 
 s = 'PAYPALISHIRING'
 row = 3
