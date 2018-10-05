@@ -4,6 +4,7 @@ class Solution:
         :type s: str
         :rtype: bool
         """
+        """
         stack = []
         dict = {"]": "[", "}": "{", ")": "("}
         for item in s:
@@ -15,12 +16,13 @@ class Solution:
             else:
                 return False
         return stack == []
+        """
 
 
-# pastr = '()[]{}'
+pastr = '()[]{}'
 # pastr = '([])'
 # pastr = '['
-pastr = ']'
+# pastr = ']'
 sol = Solution()
 res = sol.isValid(pastr)
 print(res)

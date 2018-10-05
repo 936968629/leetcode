@@ -1,4 +1,3 @@
-# Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -24,31 +23,31 @@ def printLinkedList(head):
         cur = cur.next
     print('NUll')
 
-
 class Solution:
-    def deleteDuplicates(self, head):
+    def mergeTwoLists(self, l1, l2):
         """
-        :type head: ListNode
+        :type l1: ListNode
+        :type l2: ListNode
         :rtype: ListNode
         """
-        dummmyhead = ListNode(-1)
-        dummmyhead.next = head
-        pre = dummmyhead
-        cur = head
-        while cur and cur.next:
-
-            if cur.val == cur.next.val:
-                while cur and cur.next and cur.val == cur.next.val:
-                    cur = cur.next
-                cur = cur.next
-                pre.next = cur
+        dummyhead = ListNode(-1)
+        cur = dummyhead
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
             else:
-                pre = pre.next
-                cur = cur.next
-        return dummmyhead.next
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        cur.next = l1 or l2
+        return dummyhead.next
 
-nums = [1, 1, 1, 2, 3, 3, 3]
-l = MyLinkedList.createLinkedList(nums)
+
+num1 = [1, 2, 4]
+num2 = [1, 3, 4]
+l1 = MyLinkedList.createLinkedList(num1)
+l2 = MyLinkedList.createLinkedList(num2)
 sol = Solution()
-res = sol.deleteDuplicates(l)
+res = sol.mergeTwoLists(l1, l2)
 printLinkedList(res)

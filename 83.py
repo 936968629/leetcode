@@ -33,21 +33,17 @@ class Solution:
         """
         dummmyhead = ListNode(-1)
         dummmyhead.next = head
-        pre = dummmyhead
-        cur = head
-        while cur and cur.next:
-
-            if cur.val == cur.next.val:
-                while cur and cur.next and cur.val == cur.next.val:
-                    cur = cur.next
-                cur = cur.next
-                pre.next = cur
+        cur = dummmyhead
+        while cur.next != None:
+            if cur.next.next != None and cur.next.val == cur.next.next.val:
+                delNode = cur.next
+                cur.next = delNode.next
+                delNode = None
             else:
-                pre = pre.next
                 cur = cur.next
         return dummmyhead.next
 
-nums = [1, 1, 1, 2, 3, 3, 3]
+nums = [1, 1, 2, 3, 3, 3]
 l = MyLinkedList.createLinkedList(nums)
 sol = Solution()
 res = sol.deleteDuplicates(l)

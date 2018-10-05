@@ -1,4 +1,3 @@
-# Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -26,29 +25,32 @@ def printLinkedList(head):
 
 
 class Solution:
-    def deleteDuplicates(self, head):
+    def swapPairs(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
-        dummmyhead = ListNode(-1)
-        dummmyhead.next = head
-        pre = dummmyhead
-        cur = head
-        while cur and cur.next:
+        dummyhead = ListNode(-1)
+        dummyhead.next = head
+        p = dummyhead
 
-            if cur.val == cur.next.val:
-                while cur and cur.next and cur.val == cur.next.val:
-                    cur = cur.next
-                cur = cur.next
-                pre.next = cur
-            else:
-                pre = pre.next
-                cur = cur.next
-        return dummmyhead.next
+        while p.next and p.next.next:
+            # 交换
+            node1 = p.next
+            node2 = p.next.next
+            nextNode = node2.next
 
-nums = [1, 1, 1, 2, 3, 3, 3]
-l = MyLinkedList.createLinkedList(nums)
+            node2.next = node1
+            node1.next = nextNode
+            p.next = node2
+
+            p = node1
+
+        return dummyhead.next
+
+sum = [1, 2, 3, 4]
+l = MyLinkedList.createLinkedList(sum)
+
 sol = Solution()
-res = sol.deleteDuplicates(l)
+res = sol.swapPairs(l)
 printLinkedList(res)
