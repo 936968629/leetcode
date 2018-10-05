@@ -45,7 +45,6 @@ class Solution:
 
         return pre
 
-
 nums = [1, 2, 3, 4, 5]
 l = MylinkedList.createLinkedList(nums)
 printLinkedList(l)
