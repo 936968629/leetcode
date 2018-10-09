@@ -47,6 +47,7 @@ class Solution:
                 cur = cur.next
         return dummmyhead.next
 
+
 nums = [1, 1, 1, 2, 3, 3, 3]
 l = MyLinkedList.createLinkedList(nums)
 sol = Solution()
