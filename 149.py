@@ -1,5 +1,5 @@
 # Definition for a point.
-from decimal import Decimal
+import numpy
 from fractions import Fraction
 class Point:
     def __init__(self, a=0, b=0):
@@ -23,7 +23,7 @@ class Solution:
             b = point1.y
         else:
             # k = (y2 - y1) / (x2 - x1);
-            k = Fraction((point2.y - point1.y) / (point2.x - point1.x))
+            k = numpy.float128((point2.y - point1.y)) / numpy.float128((point2.x - point1.x))
             b = point1.y - k * point1.x
         return str(k) + ',' + str(b)
 
@@ -59,7 +59,7 @@ class Solution:
 
         print(res)
         return res
-
+    '''
     def test(self, points):
         if not points:
             return 0
@@ -86,6 +86,7 @@ class Solution:
         print(Dict)
         print(Max + 1)
         return Max + 1
+    '''
 
 
 parpoints = [[1, 1], [2, 2], [3, 3]]

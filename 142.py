@@ -9,6 +9,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # 使用set
         """
         find_map = set()
         iscycle = self.iscycle(head=head)
@@ -22,7 +23,16 @@ class Solution(object):
                     return head
                 head = head.next
         """
-
+        # 不使用set
+        slow = head
+        iscycle, xiangyu = self.iscycle(head)
+        if not iscycle:
+            return None
+        while slow and xiangyu:
+            if slow == xiangyu:
+                return xiangyu
+            slow = slow.next
+            xiangyu = xiangyu.next
 
     def iscycle(self,head):
         slow = fast = head
@@ -30,5 +40,5 @@ class Solution(object):
             slow = slow.next
             fast = fast.next.next
             if fast == slow:
-                return True
-        return False
+                return True,slow
+        return False,slow

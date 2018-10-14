@@ -59,17 +59,25 @@ class Solution:
         print(resss)
         return resss
         """
+
         if not root:
             return []
         queue = [root]
         res = []
+        pres = []
+        ncount = 1
         while queue:
             item = queue.pop(0)
-            res.append(item.val)
+            pres.append(item.val)
             if item.left:
                 queue.append(item.left)
             if item.right:
                 queue.append(item.right)
+            ncount -= 1
+            if ncount == 0:
+                res.append(pres)
+                pres = []
+                ncount = len(queue)
 
         print(res)
         return res
