@@ -11,9 +11,19 @@ class Solution:
         :type root: TreeNode
         :rtype: List[int]
         """
+        # 递归
+        """
+        if root is None:
+            return []
+        else:
+            return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
+        """
+        # 非递归
+        if not root:
+            return []
+        stack = [root.val]
+        res = []
 
-        # return [] if root is None else [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
 
-        
-
-
+sol = Solution()
+res = sol.preorderTraversal()
