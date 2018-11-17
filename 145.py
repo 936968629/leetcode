@@ -19,37 +19,34 @@ class MyTreeNode:
         return root
 
 class Solution:
-    def preorderTraversal(self, root):
+    def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        # 递归
-        """
-        if root is None:
-            return []
-        else:
-            return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
-        """
-        # 非递归 用栈实现
+        # if not root:
+        #     return []
+        # return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+
+        #使用非递归
         res = []
         stack = []
-        command = Command('go', root)
-        stack.append(command)
+        stack.append(Command('go', root))
         while stack:
             item = stack.pop()
             if item.s == 'print':
                 res.append(item.node.val)
             elif item.s == 'go':
-
-                stack.append(Command('print', item.node))
+                if not item.node:
+                    continue
                 if item.node.right:
                     stack.append(Command('go', item.node.right))
+                stack.append(Command('print', item.node))
                 if item.node.left:
                     stack.append(Command('go', item.node.left))
         return res
 
+
 root = MyTreeNode.createTree()
 sol = Solution()
-res = sol.preorderTraversal(root)
-print(res)
+sol.postorderTraversal(root)

@@ -9,47 +9,35 @@ class Command:
         self.s = s
         self.node = node
 
-class MyTreeNode:
-    @staticmethod
-    def createTree():
-        root = TreeNode(1)
-        root.left = TreeNode(2)
-        root.right = TreeNode(3)
-        root.left.right = TreeNode(4)
-        return root
-
 class Solution:
-    def preorderTraversal(self, root):
+    def inorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        # 递归
-        """
-        if root is None:
-            return []
-        else:
-            return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
-        """
-        # 非递归 用栈实现
+        # if not root:
+        #     return []
+        # return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+
+        # 非递归
         res = []
         stack = []
-        command = Command('go', root)
-        stack.append(command)
+        stack.append(Command('go', root))
         while stack:
             item = stack.pop()
             if item.s == 'print':
                 res.append(item.node.val)
             elif item.s == 'go':
-
-                stack.append(Command('print', item.node))
+                if not item.node:
+                    continue
                 if item.node.right:
                     stack.append(Command('go', item.node.right))
+                stack.append(Command('print', item.node))
                 if item.node.left:
                     stack.append(Command('go', item.node.left))
         return res
 
-root = MyTreeNode.createTree()
+
 sol = Solution()
-res = sol.preorderTraversal(root)
+res = sol.inorderTraversal(root)
 print(res)
