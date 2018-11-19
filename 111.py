@@ -16,37 +16,43 @@ class MyTree:
         root.left.left.left.left.left = TreeNode(7)
         return root
 
-
 class Solution:
-    def maxDepth(self, root):
+    def minDepth(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        # if not root:
-        #     return 0
-        # leftMax = self.maxDepth(root.left)
-        # rightMax = self.maxDepth(root.right)
-        # return max(leftMax, rightMax) + 1
-
-        # 使用队列
+        """
         if not root:
             return 0
+        if root.left is None:
+            return self.minDepth(root.right) + 1
+        if root.right is None:
+            return self.minDepth(root.left) + 1
+        else:
+            return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+        """
+        # 使用队/列栈
+        if not root:
+            return 0
+        minHeight = 0
         queue = [root]
-        count = 0
         while queue:
-            count += 1
+            minHeight += 1
             size = len(queue)
             while size > 0:
-                item = queue.pop(0)
+                item = queue.pop()
+                if not item.left and not item.right:
+                    return minHeight
                 if item.left:
                     queue.append(item.left)
                 if item.right:
                     queue.append(item.right)
                 size -= 1
-        return count
+        return minHeight
+
 
 root = MyTree.createTree()
 sol = Solution()
-res = sol.maxDepth(root)
+res = sol.minDepth(root)
 print(res)

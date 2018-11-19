@@ -8,34 +8,25 @@ class MyTree:
     @staticmethod
     def createTree():
         root = TreeNode(1)
-        root.left = TreeNode(2)
-        root.right = TreeNode(3)
-        root.left.left = TreeNode(4)
-        root.left.left.left = TreeNode(5)
-        root.left.left.left.left = TreeNode(6)
-        root.left.left.left.left.left = TreeNode(7)
+        root.left = TreeNode(3)
+        root.right = TreeNode(2)
+        root.left.left = TreeNode(5)
+        root.left.right = TreeNode(3)
+        root.right.right = TreeNode(9)
+        root.left.left.left = TreeNode(6)
         return root
 
-
 class Solution:
-    def maxDepth(self, root):
+    def widthOfBinaryTree(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        # if not root:
-        #     return 0
-        # leftMax = self.maxDepth(root.left)
-        # rightMax = self.maxDepth(root.right)
-        # return max(leftMax, rightMax) + 1
-
-        # 使用队列
         if not root:
             return 0
+        width = 1
         queue = [root]
-        count = 0
         while queue:
-            count += 1
             size = len(queue)
             while size > 0:
                 item = queue.pop(0)
@@ -44,9 +35,11 @@ class Solution:
                 if item.right:
                     queue.append(item.right)
                 size -= 1
-        return count
+            width = max(width, len(queue))
+        return width
+
 
 root = MyTree.createTree()
 sol = Solution()
-res = sol.maxDepth(root)
+res = sol.widthOfBinaryTree(root)
 print(res)
