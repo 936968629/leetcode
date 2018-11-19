@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-=======
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -24,41 +17,36 @@ class MyTreeNode:
         root.right = TreeNode(3)
         root.left.right = TreeNode(4)
         return root
->>>>>>> 254f3e1d9cbd1f804baf330e9eadf8bf78d0b50c
 
 class Solution:
-    def preorderTraversal(self, root):
+    def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        # 递归
-        """
-        if root is None:
-            return []
-        else:
-            return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
-        """
-        # 非递归 用栈实现
+        # if not root:
+        #     return []
+        # return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
+
+        #使用非递归
         res = []
         stack = []
-        command = Command('go', root)
-        stack.append(command)
+        stack.append(Command('go', root))
         while stack:
             item = stack.pop()
             if item.s == 'print':
                 res.append(item.node.val)
             elif item.s == 'go':
-
-                stack.append(Command('print', item.node))
+                if not item.node:
+                    continue
                 if item.node.right:
                     stack.append(Command('go', item.node.right))
+                stack.append(Command('print', item.node))
                 if item.node.left:
                     stack.append(Command('go', item.node.left))
         return res
 
+
 root = MyTreeNode.createTree()
 sol = Solution()
-res = sol.preorderTraversal(root)
-print(res)
->>>>>>> 254f3e1d9cbd1f804baf330e9eadf8bf78d0b50c
+sol.postorderTraversal(root)
