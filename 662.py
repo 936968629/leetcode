@@ -22,21 +22,21 @@ class Solution:
         :type root: TreeNode
         :rtype: int
         """
-        if not root:
-            return 0
-        width = 1
-        queue = [root]
+        # if not root:
+        #     return 0
+        maxWidth = 1
+        queue = [ [root, 1] ]
         while queue:
             size = len(queue)
+            maxWidth = max(maxWidth, queue[-1][1] - queue[0][1]+1)
             while size > 0:
                 item = queue.pop(0)
-                if item.left:
-                    queue.append(item.left)
-                if item.right:
-                    queue.append(item.right)
+                if item[0].left:
+                    queue.append([item[0].left, 2*item[1] ])
+                if item[0].right:
+                    queue.append([item[0].right, 2*item[1]+1 ])
                 size -= 1
-            width = max(width, len(queue))
-        return width
+        return maxWidth
 
 
 root = MyTree.createTree()
