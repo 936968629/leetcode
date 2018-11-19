@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-=======
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -24,7 +17,7 @@ class MyTreeNode:
         root.right = TreeNode(3)
         root.left.right = TreeNode(4)
         return root
->>>>>>> 254f3e1d9cbd1f804baf330e9eadf8bf78d0b50c
+
 
 class Solution:
     def preorderTraversal(self, root):
@@ -61,4 +54,4 @@ root = MyTreeNode.createTree()
 sol = Solution()
 res = sol.preorderTraversal(root)
 print(res)
->>>>>>> 254f3e1d9cbd1f804baf330e9eadf8bf78d0b50c
+
