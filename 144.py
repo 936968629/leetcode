@@ -18,6 +18,7 @@ class MyTreeNode:
         root.left.right = TreeNode(4)
         return root
 
+
 class Solution:
     def preorderTraversal(self, root):
         """
@@ -53,3 +54,4 @@ root = MyTreeNode.createTree()
 sol = Solution()
 res = sol.preorderTraversal(root)
 print(res)
+

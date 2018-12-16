@@ -8,6 +8,7 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
+        # 使用额外空间
         find_map = set()
         cura = headA
         curb = headB
@@ -21,3 +22,5 @@ class Solution(object):
             curb = curb.next
 
         return None
+
+        # 不使用额外空间
