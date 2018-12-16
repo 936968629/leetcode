@@ -5,24 +5,27 @@ class Solution:
         :rtype: int
         """
 
-        """
-        queuelist = []
-        queuelist.append([n, 0])
-        while queuelist:
-            item = queuelist.pop(0)
+        queue = []
+        queue.append([n, 0])
+        visited = set()
+        while queue:
+            item = queue.pop(0)
             num = item[0]
-            step = item[1]
+            temp = item[1]
 
             if num == 0:
-                print(step)
-                return step
-            i = 1
-            while num - i * i >=0:
-                queuelist.append([num - i*i , step+1])
+                return temp
+
+            for i in range(1, n+1):
+                shengyu = num - i * i
+                if shengyu < 0:
+                    break
+                if shengyu not in visited:
+                    queue.append([shengyu, temp+1])
+                    visited.add(shengyu)
                 i += 1
-        """
-        
 
 
 sol = Solution()
-sol.numSquares(13)
+res = sol.numSquares(13)
+print(res)

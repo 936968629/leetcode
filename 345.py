@@ -21,7 +21,7 @@ class Solution:
         # print(s)
         return s
 
-s = "leetcode"
+s = "jianzhioffer"
 sol = Solution()
 sol.reverseVowels(s)
 

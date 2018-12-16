@@ -11,7 +11,7 @@ class Solution(object):
         :type head: RandomListNode
         :rtype: RandomListNode
         """
-
+        """
         visited = {}  # original list nodes -> new list nodes
         dummy = RandomListNode(0)
         p_res = dummy
@@ -36,3 +36,45 @@ class Solution(object):
             p = p.next
 
         return dummy.next
+        """
+        if not head:
+            return None
+        head = self.copynode(head)
+        head = self.copyRandomNode(head)
+        cloneHead = self.spiltnode(head)
+        return cloneHead
+
+    # 复制重复节点
+    def copynode(self, head):
+        cur = head
+        while cur:
+            copyNode = RandomListNode(cur.label)
+            copyNode.next = cur.next
+            copyNode.random = None
+            cur.next = copyNode
+            cur = copyNode.next
+        return head
+    # 复制随机节点
+    def copyRandomNode(self, head):
+        cur = head
+        while cur:
+            copynode = cur.next
+            if cur.random:
+                copynode.random = cur.random.next
+            cur = copynode.next
+        return head
+
+    def spiltnode(self, head):
+        cur = head
+        cloneHead = RandomListNode(None)
+        cloneNode = RandomListNode(None)
+        if cur:
+            cloneHead = cloneNode = cur.next
+            cur.next = cloneHead.next
+            cur = cur.next
+        while cur:
+            cloneNode.next = cur.next
+            cloneNode = cloneNode.next
+            cur.next = cloneNode.next
+            cur = cur.next
+        return cloneHead

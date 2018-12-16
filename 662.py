@@ -38,6 +38,20 @@ class Solution:
                 size -= 1
         return maxWidth
 
+        left = {}
+        self.ans = 0
+        self.helper(root, 0, 0, left)
+        return self.ans
+
+    def helper(self, root, pos, level, left):
+        if root == None:
+            return
+        if level not in left:
+            left[level] = pos
+        self.ans = max(self.ans, pos - left[level] + 1)
+        self.helper(root.left, 2 * pos + 1, level + 1, left)
+        self.helper(root.right, 2 * pos + 2, level + 1, left)
+
 
 root = MyTree.createTree()
 sol = Solution()
