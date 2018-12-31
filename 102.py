@@ -11,7 +11,7 @@ class MyTree:
         root = TreeNode(1)
         root.left = TreeNode(2)
         root.right = TreeNode(3)
-        # root.left.left = TreeNode(4)
+        root.right.left = TreeNode(4)
         root.left.right = TreeNode(5)
         return root
 
@@ -38,7 +38,7 @@ class Solution:
         return res
         """
 
-        """
+
         # 层序遍历 返回有None的列表
         if not root: return []
         stack, queue, res, nCount = [root], [], [[root.val]], 1
@@ -56,31 +56,30 @@ class Solution:
                 stack.append(None)
             if temp.right:
                 stack.append(temp.right)
+
         print(resss)
         return resss
-        """
 
+        """
         if not root:
             return []
         queue = [root]
         res = []
-        pres = []
-        ncount = 1
         while queue:
-            item = queue.pop(0)
-            pres.append(item.val)
-            if item.left:
-                queue.append(item.left)
-            if item.right:
-                queue.append(item.right)
-            ncount -= 1
-            if ncount == 0:
-                res.append(pres)
-                pres = []
-                ncount = len(queue)
-
+            pres = []
+            size = len(queue)
+            while size > 0:
+                item = queue.pop(0)
+                size -= 1
+                pres.append(item.val)
+                if item.left:
+                    queue.append(item.left)
+                if item.right:
+                    queue.append(item.right)
+            res.append(pres)
         print(res)
         return res
+        """
 
 
 l = MyTree.createTree()
