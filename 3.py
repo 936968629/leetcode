@@ -23,18 +23,16 @@ class Solution:
         # print(countList)
         # return res
 
-        # cache = {}
-        # longest = 0
-        # start = 0
-        # for i, ch in enumerate(s):
-        #     if ch in cache:
-        #         start = max(start, cache[ch] + 1)
-        #     cache[ch] = i
-        #     longest = max(longest, i - start + 1)
-        #
-        # return longest
 
-
+        cache = {}
+        longest = 0
+        start = 0
+        for i,v in enumerate(s):
+            if v in cache:
+                start = max(start, cache[v]+1)
+            cache[v] = i
+            longest = max(longest, i-start+1)
+        return longest
 
 str = 'bba'
 Sol = Solution()

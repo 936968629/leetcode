@@ -29,4 +29,5 @@ class Solution:
 
 parstrs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 sol = Solution()
-sol.groupAnagrams(parstrs)
+res = sol.groupAnagrams(parstrs)
+print(res)
